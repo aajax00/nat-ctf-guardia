@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGCTF - Live Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="scanlines"></div>
+    <div class="snow-container" id="snow-container"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo-area">
+                <img src="Guardia_logo_4k.png" alt="Guardia CTF Logo" id="ctf-logo">
+                <div class="titles">
+                    <h1><span class="nabla-title">Guardia National CTF</span></h1>
+                    <p class="subtitle">> SYSTEM_STATUS: <span class="blink">ONLINE</span></p>
+                </div>
+            </div>
+
+            <div class="stats-area">
+                <div class="stat-item">
+                    <span class="stat-label">FLAGS SOUMIS:</span>
+                    <span class="stat-value" id="stat-flags">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">CHALLENGES:</span>
+                    <span class="stat-value" id="stat-challenges">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">PARTICIPANTS:</span>
+                    <span class="stat-value" id="stat-participants">-</span>
+                </div>
+            </div>
+
+            <div class="last-flag-box">
+                <p class="last-flag-label">DERNIER FLAG</p>
+                <div id="last-flag-info">Chargement...</div>
+            </div>
+
+            <div class="timer-box">
+                <p class="timer-label">TEMPS RESTANT</p>
+                <div id="countdown">00:00:00</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="terminal-window">
+                <div class="terminal-bar">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="title">root@guardia-ctf:~# ./user_list</span>
+                </div>
+                <div class="table-wrapper">
+                    <table id="scoreboard">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">#</th>
+                                <th style="width: 60%">PSEUDO</th>
+                                <th style="width: 5%"></th>
+                                <th style="width: 25%">SCORE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scoreboard-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 class="glitch">FLAG VALIDÉ !</h2>
+            <div class="modal-body">
+                <p id="notif-team" class="hacker-name">PSEUDO</p>
+                <p class="action-text">Vient de Flag 🏁</p>
+                <div class="points-box">
+                    +<span id="notif-points">0</span> PTS
+                </div>
+            </div>
+            <div class="loading-bar"><div class="bar-fill"></div></div>
+        </div>
+    </div>
+
+    <audio id="notification-sound" preload="auto">
+        <source src="christmas-sound.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

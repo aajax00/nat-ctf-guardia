@@ -1,0 +1,536 @@
+/* Guardia School Color Theme */
+:root {
+    --bs-dark: #181C1F;
+    --bs-dark-rgb: 24, 28, 31;
+    --bs-body-bg: #0E1113;
+    --bs-link-color: #00CFF6;
+    --bs-link-hover-color: #6DE5FF;
+    --bs-code-color: #00CFF6;
+    --bs-primary-rgb: 17, 12, 14;
+    --primary-font: "Noto Sans Mono", "Courier New", monospace;
+    --title-font: "Press Start 2P", "Courier New", monospace;
+    --yum: #110C0E;
+    --guardia-cyan: #00CFF6;
+    --guardia-gold: #D6BE91;
+    --guardia-dark: #110C0E;
+    --guardia-darker: #0E1113;
+    --guardia-gray: #474D57;
+    --guardia-lightgray: #B1B1B1;
+
+    --bs-body-color: #B1B1B1;
+    --bs-emphasis-color: #fff;
+    --bs-emphasis-color-rgb: 255, 255, 255;
+    --bs-secondary-color: rgba(222, 226, 230, .75);
+    --bs-secondary-color-rgb: 222, 226, 230;
+    --bs-secondary-bg: #343a40;
+    --bs-secondary-bg-rgb: 52, 58, 64;
+    --bs-tertiary-color: rgba(222, 226, 230, .5);
+    --bs-tertiary-color-rgb: 222, 226, 230;
+    --bs-tertiary-bg: #2b3035;
+    --bs-highlight-color: #dee2e6;
+    --bs-highlight-bg: #664d03;
+    --bs-border-color: #495057;
+    --bs-border-color-translucent: rgba(255, 255, 255, .15);
+    --bs-form-valid-color: #75b798;
+    --bs-form-valid-border-color: #75b798;
+    --bs-form-invalid-color: #ea868f;
+    --bs-form-invalid-border-color: #ea868f;
+
+    /* Couleurs adaptées */
+    --bg-color: var(--bs-body-bg);
+    --green: var(--guardia-cyan);
+    --dim-green: #003644;
+    --red: #FF6B6B;
+    --orange: #FFA500;
+
+    /* Police */
+    --font-main: 'Press Start 2P', cursive;
+    --font-title: 'Nabla', display;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--green);
+    font-family: var(--font-main);
+    overflow: hidden;
+    height: 100vh;
+    cursor: none;
+}
+
+/* --- Effets Visuels --- */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.7;
+}
+
+/* Snowflake disabled */
+
+/* --- Mise en page --- */
+.container {
+    padding: 1vh 2vw;
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 5;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+    border-bottom: 2px solid var(--dim-green);
+    padding-bottom: 1vh;
+    flex-shrink: 0;
+}
+
+/* --- Logo & Titres --- */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#ctf-logo {
+    height: 8vh;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(0, 207, 246, 0.4));
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    line-height: 1;
+    font-size: 3vh;
+}
+
+.nabla-title {
+    font-family: var(--font-title);
+    filter: hue-rotate(120deg) brightness(1.2);
+    padding-right: 10px;
+}
+
+
+.subtitle {
+    font-size: 1.2vh;
+    margin-top: 5px;
+    color: var(--green);
+    text-transform: uppercase;
+}
+
+.subtitle .blink.pending {
+    color: var(--guardia-lightgray);
+}
+
+.subtitle .blink.online {
+    color: var(--green);
+}
+
+.subtitle .blink.offline {
+    color: var(--red);
+}
+
+.blink {
+    animation: blinker 0.8s steps(10, start) infinite;
+    color: var(--green);
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* --- Stats Area --- */
+.stats-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+}
+
+.stat-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 1.4vh;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 1.6vh;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Last Flag Box --- */
+.last-flag-box {
+    text-align: center;
+    border: 3px solid var(--green);
+    padding: 10px 20px;
+    box-shadow: 0 0 15px rgba(0, 207, 246, 0.4);
+    background: rgba(0, 50, 50, 0.5);
+    min-width: 280px;
+    max-width: 350px;
+}
+
+.last-flag-box.hidden {
+    display: none;
+}
+
+.last-flag-label {
+    margin: 0;
+    font-size: 1.2vh;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+#last-flag-info {
+    font-size: 1.6vh;
+    color: #fff;
+    margin-top: 8px;
+    line-height: 1.6;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+#last-flag-info strong {
+    color: var(--red);
+    font-size: 1.8vh;
+    text-shadow: 0 0 5px rgba(255, 0, 51, 0.5);
+}
+
+/* --- Timer --- */
+.timer-box {
+    text-align: right;
+    border: 2px solid var(--red);
+    padding: 5px 15px;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.2);
+    background: rgba(50, 0, 0, 0.3);
+}
+
+.timer-label {
+    margin: 0;
+    font-size: 1vh;
+    color: var(--red);
+    text-transform: uppercase;
+}
+
+#countdown {
+    font-size: 2.5vh;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(100, 0, 0, 0.5);
+    margin-top: 8px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--red);
+    width: 0%;
+    transition: width 1s linear;
+    box-shadow: 0 0 5px var(--red);
+}
+
+/* --- Scoreboard Terminal --- */
+.terminal-window {
+    flex-grow: 1;
+    background: rgba(0, 10, 0, 0.85);
+    border: 2px solid var(--green);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.terminal-bar {
+    background: var(--green);
+    color: black;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.5vh;
+    flex-shrink: 0;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red {
+    background: #ff5f56;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #27c93f;
+}
+
+.table-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Mode user-list : colonnes égales */
+#scoreboard.user-list-mode {
+    table-layout: fixed;
+}
+
+#scoreboard.user-list-mode th.campus-header {
+    width: 33.333%;
+    text-align: center;
+    border-right: 2px solid var(--green);
+}
+
+#scoreboard.user-list-mode th.campus-header:last-child {
+    border-right: none;
+}
+
+th {
+    text-align: left;
+    padding: 1.5vh 10px;
+    border-bottom: 2px solid var(--green);
+    color: var(--red);
+    font-size: 1.8vh;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 1vh 10px;
+    border-bottom: 1px solid var(--dim-green);
+    font-size: 1.6vh;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+td:nth-child(1) {
+    width: 10%;
+    max-width: none;
+}
+
+td:nth-child(2) {
+    width: 60%;
+    max-width: 0;
+}
+
+td:nth-child(3) {
+    width: 5%;
+    max-width: none;
+    text-align: center;
+    font-size: 2vh;
+}
+
+td:nth-child(4) {
+    width: 25%;
+    max-width: none;
+}
+
+/* Couleurs des flèches */
+.arrow-up {
+    color: var(--green) !important;
+    text-shadow: 0 0 5px var(--green);
+}
+
+.arrow-down {
+    color: var(--red) !important;
+    text-shadow: 0 0 5px var(--red);
+}
+
+.arrow-neutral {
+    color: #fff !important;
+}
+
+/* Couleurs podium - uniquement en mode scoreboard */
+#scoreboard.scoreboard-mode tr:nth-child(1) td {
+    color: var(--guardia-gold);
+    text-shadow: 0 0 5px var(--guardia-gold);
+}
+
+#scoreboard.scoreboard-mode tr:nth-child(2) td {
+    color: #e0e0e0;
+}
+
+#scoreboard.scoreboard-mode tr:nth-child(3) td {
+    color: #cd7f32;
+}
+
+/* Affiliation column */
+td.affiliation {
+    font-size: 1.2vh;
+    color: var(--guardia-lightgray);
+    opacity: 0.8;
+    text-align: left;
+    padding-left: 15px;
+}
+
+/* Campus cells for user list mode */
+td.campus-cell {
+    text-align: left;
+    vertical-align: top;
+    padding: 1vh 15px;
+    font-size: 1.4vh;
+    color: var(--guardia-gold);
+    border-right: 2px solid var(--green);
+    width: 33.333%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+td.campus-cell:last-child {
+    border-right: none;
+}
+
+/* Animation des lignes qui changent de position */
+@keyframes moveRow {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+tr.position-changed {
+    animation: moveRow 0.6s ease;
+}
+
+/* --- Modal Notification --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #000;
+    border: 4px solid var(--red);
+    padding: 40px;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.modal.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal h2 {
+    font-family: var(--font-title);
+    filter: hue-rotate(120deg);
+    font-size: 6vh;
+    margin: 0 0 20px 0;
+}
+
+.hacker-name {
+    font-size: 4vh;
+    margin: 20px 0;
+    color: #fff;
+    text-transform: none;
+}
+
+.action-text {
+    font-size: 2vh;
+    color: var(--green);
+    text-transform: uppercase;
+}
+
+.points-box {
+    font-size: 5vh;
+    color: var(--green);
+    margin-top: 20px;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 10px;
+    background: #300;
+    margin-top: 30px;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--red);
+    width: 0%;
+}
+
+.modal.visible .bar-fill {
+    width: 100%;
+    transition: width 5s linear;
+}
+
+.hidden {
+    display: none;
+}
